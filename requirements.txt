@@ -1,0 +1,4 @@
+Flask
+ddgs
+yt-dlp
+requests
