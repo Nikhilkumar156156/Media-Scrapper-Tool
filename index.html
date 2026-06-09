@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Scraper Hub - No API Search & Download</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="glowing-orb orb-1"></div>
+    <div class="glowing-orb orb-2"></div>
+
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles logo-icon"></i>
+                <h1>Media Scraper <span class="accent-text">Hub</span></h1>
+            </div>
+            <p class="subtitle">Scrape images, GIFs, and videos from the web in real-time, no API keys required.</p>
+        </header>
+
+        <!-- Search Control Dashboard -->
+        <section class="search-panel">
+            <form id="search-form" class="search-form">
+                <div class="search-input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Type keyword to scrape (e.g. cyber punk city, cute kittens)..." required autocomplete="off">
+                </div>
+                <div class="controls-wrapper">
+                    <div class="count-input-wrapper">
+                        <label for="limit-input"><i class="fa-solid fa-list-numeric icon-label"></i> Count:</label>
+                        <input type="number" id="limit-input" min="1" max="100" value="15">
+                    </div>
+                    <button type="submit" class="btn-search">
+                        <span>Scrape</span>
+                        <i class="fa-solid fa-circle-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <nav class="media-tabs">
+            <button class="tab-btn active" data-tab="images">
+                <i class="fa-regular fa-image"></i> Images
+            </button>
+            <button class="tab-btn" data-tab="gifs">
+                <i class="fa-solid fa-bolt"></i> GIFs
+            </button>
+            <button class="tab-btn" data-tab="videos">
+                <i class="fa-solid fa-play"></i> Videos
+            </button>
+            <div class="active-indicator"></div>
+        </nav>
+
+        <!-- Results Display Grid -->
+        <main class="results-container">
+            <!-- Loading Skeleton (Placeholder Grid) -->
+            <div class="skeleton-grid hidden" id="skeleton-loader">
+                <!-- Skeletons will be injected here by JS -->
+            </div>
+
+            <!-- Empty State / Welcome Screen -->
+            <div class="empty-state" id="empty-state">
+                <div class="empty-icon-wrapper">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                </div>
+                <h3>Start Scraping</h3>
+                <p>Enter a keyword above and customize the result count. The scraper will extract assets directly from the internet, providing one-click direct download links.</p>
+                <div class="demo-tags">
+                    <span class="tag-pill">neon city</span>
+                    <span class="tag-pill">relaxing lofi gif</span>
+                    <span class="tag-pill">spacex launch</span>
+                    <span class="tag-pill">nature 4k</span>
+                </div>
+            </div>
+
+            <!-- Active Content Grid -->
+            <div class="media-grid hidden" id="media-grid"></div>
+        </main>
+    </div>
+
+    <!-- Media Lightbox / Modal Preview -->
+    <div class="lightbox-modal hidden" id="lightbox-modal">
+        <button class="modal-close" id="modal-close" aria-label="Close Lightbox">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        
+        <div class="modal-content">
+            <div class="media-preview-container" id="media-preview-container">
+                <!-- Dynamic Media Content Injected here by JS -->
+            </div>
+            
+            <div class="media-details-panel">
+                <h2 class="media-title" id="modal-title">Media Title</h2>
+                <div class="media-metadata">
+                    <span id="modal-meta-dimensions" class="meta-item"><i class="fa-solid fa-expand"></i> 1920 x 1080</span>
+                    <span id="modal-meta-source" class="meta-item"><i class="fa-solid fa-link"></i> Website</span>
+                    <span id="modal-meta-duration" class="meta-item hidden"><i class="fa-solid fa-clock"></i> 00:00</span>
+                </div>
+                <div class="modal-actions">
+                    <a href="#" class="btn-download" id="modal-download-btn">
+                        <i class="fa-solid fa-download"></i> Download Original File
+                    </a>
+                    <a href="#" target="_blank" class="btn-secondary" id="modal-source-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Source Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
